@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const secretjwt = require('../../config/database');
 
 const User = require("../models/user");
 
@@ -63,7 +62,7 @@ exports.user_login = (req, res, next) => {
           email: user[0].email,
           userId: user[0]._id
         },
-        secretjwt.secret,
+        process.env.secret,
         {
           expiresIn:"1h"
         });

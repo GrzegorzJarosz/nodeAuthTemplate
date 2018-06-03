@@ -3,15 +3,15 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const config = require('./config/database');
 const morgan = require('morgan');
+require('dotenv').config();
 
 /*---------------------------------mongoose--------------------------------------------------------------*/
 //db connect
-mongoose.connect(config.database);
+mongoose.connect(process.env.database);
 //on connect
 mongoose.connection.on('connected', () => {
-  console.log(`connected to db ${config.database}`);
+  console.log(`connected to db ${process.env.database}`);
 })
 
 /*-----------------------------------------------------------------------------------------------*/
